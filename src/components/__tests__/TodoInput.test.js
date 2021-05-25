@@ -26,6 +26,7 @@ describe("할 일을 추가할 수 있다.", () => {
     it("할 일을 입력한 뒤 추가 버튼을 클릭하여 할 일 추가 요청을 보낼 수 있어야 한다.", () => {
         // given
         const newTodo = "새로운 할 일";
+        const { type } = addTodo(newTodo);
 
         const { queryByTestId } = render(<TodoInput />);
         const todoInput = queryByTestId("todo-input");
@@ -36,9 +37,8 @@ describe("할 일을 추가할 수 있다.", () => {
         fireEvent.click(addButton);
 
         // then
-        const {type, title} = addTodo(newTodo);
         expect(mockDispatch).toBeCalled();
-        expect(mockDispatch).toBeCalledWith(expect.objectContaining({type, title}));
+        expect(mockDispatch).toBeCalledWith(expect.objectContaining({ type }));
     });
 
     it("할 일 추가 버튼을 클릭한 경우, 할 일 목록 페이지로 이동해야 한다.", () => {

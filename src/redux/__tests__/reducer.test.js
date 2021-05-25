@@ -19,7 +19,7 @@ describe("할 일과 관련한 요청을 처리할 수 있다.", () => {
         };
         const action = {
             type: "ADD_TODO",
-            ...newTodoPayload
+            payload: newTodoPayload
         };
 
         // then

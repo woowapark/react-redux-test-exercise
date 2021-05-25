@@ -3,7 +3,7 @@ const initialTodos = [];
 const todoReducer = (state = initialTodos, action) => {
     switch (action.type) {
         case "ADD_TODO":
-            const { id, title, completed } = action;
+            const { id, title, completed } = action.payload;
 
             return [
                 ...state,
@@ -11,7 +11,7 @@ const todoReducer = (state = initialTodos, action) => {
             ];
         case "COMPLETE_TODO":
             const nextState = state.map(todo => {
-                if (todo.id === action.id) {
+                if (todo.id === action.payload.id) {
                     return {
                         ...todo,
                         completed: true
